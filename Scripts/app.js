@@ -93,7 +93,7 @@
         if ((xhrParagraphContents.readyState === 4) && (xhrParagraphContents.status === 200)) {
 
             var ParagraphContents = JSON.parse(xhrParagraphContents.responseText);
-            var paragraphs = paragraphContents.paragraphs;
+            var paragraphs = ParagraphContents.paragraphs;
 
             paragraphs.forEach(function (paragraphs) {
                 console.log(paragraphs.getElementById("Meer"));
