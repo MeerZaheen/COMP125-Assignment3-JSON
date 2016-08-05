@@ -87,23 +87,17 @@
         console.log("message: " + message.value);
         console.log("++++++++++++++++++++++++++++++++");
     }
-
+    var xhrParagraphContents;
     function readParagraphData() {
         // data loaded                everything is ok
         if ((xhrParagraphContents.readyState === 4) && (xhrParagraphContents.status === 200)) {
 
             var ParagraphContents = JSON.parse(xhrParagraphContents.responseText);
-            var contents = paragraphContents.paragraphs;
+            var paragraphs = paragraphContents.paragraphs;
 
-            contents.forEach(function (pContents) {
-                var index = pContents["id"];
-                var parContent = pContents["content"];
-                console.log(index + " ==> " + parContent);
-                if (documentElements[index]) {
-                    documentElements[index].innerHTML = parContent;
-                }
+            paragraphs.forEach(function (paragraphs) {
+                console.log(paragraphs.getElementById("Meer"));
             }, this);
-
         }
     }
     /*   
