@@ -19,32 +19,32 @@
     // Paragraph object for AJAX
     var xhrParagraphContents;
     // <---------------- PARAGRAPHS SECTION ------------>
-    var paragraphElements = [];
+    //var paragraphElements = [];
 
-    paragraphElements[0] = document.getElementById("paragraphOne")
-    paragraphElements[1] = document.getElementById("paragraphTwo")
+    //paragraphElements[0] = document.getElementById("paragraphOne")
+    //paragraphElements[1] = document.getElementById("paragraphTwo")
     //paragraphElements[2] = document.getElementById("paragraphThree")
-    paragraphElements[3] = document.getElementById("paragraphTwo.1")
-    paragraphElements[4] = document.getElementById("paragraphTwo.2")
-    paragraphElements[5] = document.getElementById("paragraphTwo.3")
+    //paragraphElements[3] = document.getElementById("paragraphTwo.1")
+    //paragraphElements[4] = document.getElementById("paragraphTwo.2")
+    //paragraphElements[5] = document.getElementById("paragraphTwo.3")
 
-    var paragraphs = [];
+    //var paragraphs = [];
 
     // <---------------- CONTACT PAGE SECTION ------------>
 
     // create a reference for sendButton
-    var sendButton = document.getElementById("sendButton");
+    //var sendButton = document.getElementById("sendButton");
 
     // check to see if sendButton exists
-    if (sendButton) {
+    //if (sendButton) {
         // event listener
-        sendButton.addEventListener("click", sendButtonClick);
-    }
+      //  sendButton.addEventListener("click", sendButtonClick);
+   // }
 
     // event handler function that shows in console when the send button is clicked
-    function sendButtonClick(event) {
-        console.log("clicked!");
-    }
+    //function sendButtonClick(event) {
+      //  console.log("clicked!");
+    //}
 
     // create a reference to the form field
     var firstName = document.getElementById("firstName");
@@ -87,16 +87,16 @@
         console.log("message: " + message.value);
         console.log("++++++++++++++++++++++++++++++++");
     }
-    var xhrParagraphContents;
+
     function readParagraphData() {
         // data loaded                everything is ok
         if ((xhrParagraphContents.readyState === 4) && (xhrParagraphContents.status === 200)) {
 
             var ParagraphContents = JSON.parse(xhrParagraphContents.responseText);
-            var paragraphs = ParagraphContents.paragraphs;
+            var paragraphs = paragraphs.paragraphs;
 
             paragraphs.forEach(function (paragraphs) {
-                console.log(paragraphs.getElementById("Meer"));
+                console.log(paragraphs);
             }, this);
         }
     }
