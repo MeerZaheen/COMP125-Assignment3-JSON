@@ -480,3 +480,9 @@ footer .footer-below {
     display: none;
     opacity: 0;
 }
+
+#canvas{
+    border: 1px black solid;
+    border-radius: 5px;
+        
+}
