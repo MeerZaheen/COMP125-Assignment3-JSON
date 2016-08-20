@@ -13,7 +13,8 @@
 
 
 // IIFE - Immediately Invoked Function Expression
-(function () {
+var core;
+(function (core) {
     "use strict";
 
     // Paragraph object for AJAX
@@ -31,7 +32,7 @@
                 var index = paragraphDATA["id"];
                 var paragraphContent = paragraphDATA["content"];
                 console.log(index + " : " + paragraphContent);
-                if (paragraphElements[index]){
+                if (paragraphElements[index]) {
                     paragraphElements[index].innerHTML = paragraphContent;
                 }
             }, this);
@@ -65,13 +66,13 @@
 
     // check to see if sendButton exists
     if (sendButton) {
-    // event listener
-      sendButton.addEventListener("click", sendButtonClick);
-     }
+        // event listener
+        sendButton.addEventListener("click", sendButtonClick);
+    }
 
     // event handler function that shows in console when the send button is clicked
     function sendButtonClick(event) {
-      console.log("clicked!");
+        console.log("clicked!");
     }
 
     // create a reference to the form field
@@ -148,8 +149,8 @@
 
     // contact me paragraph
     //paragraphs[2] = " I'm a Civil Engineer graduate from Seneca College, Newnham Campus."
-        //+ " I worked professionally as a Civil Engineer for 2 years and realized that I would like to pursue a different career." + " I'm currently enrolled in Centennial College as a Software Engineer."
-        //+ " I enjoy First Person Shooter video games." + " I'm also a PC hardware enthusiast, as I have build my own PC - more information would be found on My Projects page."
+    //+ " I worked professionally as a Civil Engineer for 2 years and realized that I would like to pursue a different career." + " I'm currently enrolled in Centennial College as a Software Engineer."
+    //+ " I enjoy First Person Shooter video games." + " I'm also a PC hardware enthusiast, as I have build my own PC - more information would be found on My Projects page."
 
     // <---------------- END PARAGRAPHS DATA SECTION ------------>
 
@@ -159,13 +160,43 @@
     // if paragraph exists then populate each paragraph on the page
 
     for (var index = paragraphElementLength; index >= 0; index--) {
-       if (paragraphElements[index]) {
-           paragraphElements[index].innerHTML = paragraphs[index];
-       }
+        if (paragraphElements[index]) {
+            paragraphElements[index].innerHTML = paragraphs[index];
+        }
     }
 
     function init() {
         readParagraphContents();
+        initBanner();
+        stage.update();
+    }
+
+    var canvas;
+    var stage;
+    // app entry function
+    function initBanner() {
+        canvas = document.getElementById("canvas");
+        stage = new createjs.Stage(canvas);
+        stage.enableMouseOver(20);
+        createjs.Ticker.framerate = 60;
+        createjs.Ticker.on("tick", gameLoop);
+        main();
+    }
+    function gameLoop() {
+        stage.update();
+    }
+    function main() {
+         var clickMeButton = new createjs.Bitmap("../Assets/Images/clickMeButton.png");
+        stage.addChild(clickMeButton);
+        clickMeButton.addEventListener("click",clicked);
+        clickMeButton.x = 70;
+        clickMeButton.y = 200;
+        var thought = new objects.Label("Cricket","20px Consolas", "#000000", 50, 50, true);
+        stage.addChild(thought);
+    }
+    function clicked() {
+        window.open("http://comp125-assignment-1.azurewebsites.net/project.html")
     }
     window.addEventListener("load", init);
-})();
+})(core || (core = {}));
+//# sourceMappingURL=app.js.map
