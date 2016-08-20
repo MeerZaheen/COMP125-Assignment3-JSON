@@ -215,9 +215,7 @@ var core;
         clickMeButton.x = 70;
         clickMeButton.y = 200;
     }
-    function clicked() {
-        window.open("http://comp125-assignment-1.azurewebsites.net/project.html")
-    }
+    
     window.addEventListener("load", init);
 })(core || (core = {}));
 //# sourceMappingURL=app.js.map
