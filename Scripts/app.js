@@ -186,7 +186,7 @@ var core;
         stage.update();
     }
     function main() {
-         var clickMeButton = new createjs.Bitmap("../Assets/Images/clickMeButton.png");
+         var clickMeButton = new createjs.Bitmap("Assets\img\clickMeButton.png");
         stage.addChild(clickMeButton);
         clickMeButton.addEventListener("click",clicked);
         clickMeButton.x = 70;
