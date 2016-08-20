@@ -164,6 +164,8 @@ var core;
             paragraphElements[index].innerHTML = paragraphs[index];
         }
     }
+    var canvas;
+    var stage;
 
     function init() {
         readParagraphContents();
@@ -171,28 +173,47 @@ var core;
         stage.update();
     }
 
-    var canvas;
-    var stage;
-    // app entry function
-    function initBanner() {
+    function banner() {
         canvas = document.getElementById("canvas");
         stage = new createjs.Stage(canvas);
         stage.enableMouseOver(20);
         createjs.Ticker.framerate = 60;
         createjs.Ticker.on("tick", gameLoop);
+        //click event listener to stop Ticker update and open corresponding url
+        canvas.addEventListener("click", function () {
+            if (stopTick == true) {
+                stopTick = false;
+            } else {
+                stopTick = true;
+            }
+            window.open("http://comp125-assignment-1.azurewebsites.net/project.html")
+        });
         main();
     }
     function gameLoop() {
-        stage.update();
+                if (txtLabel.x >= -200 ){
+            txtLabel.x -= 2;
+        }
+        else {
+            txtLabel.x = 350;
+            if (index == dataArray.length) {
+                index = 0;
+            }
+            else {
+                index++;
+            }
+            txtLabel.text = dataArray[index];
+        }
+        if (stopTick == true){
+            stage.update();
+}
     }
     function main() {
-         var clickMeButton = new createjs.Bitmap("Assets\img\clickMeButton.png");
+        var clickMeButton = new createjs.Bitmap("../Assets/img/clickMeButton.png");
         stage.addChild(clickMeButton);
-        clickMeButton.addEventListener("click",clicked);
+        clickMeButton.addEventListener("click", clicked);
         clickMeButton.x = 70;
         clickMeButton.y = 200;
-        var thought = new objects.Label("Cricket","20px Consolas", "#000000", 50, 50, true);
-        stage.addChild(thought);
     }
     function clicked() {
         window.open("http://comp125-assignment-1.azurewebsites.net/project.html")
